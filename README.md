@@ -26,6 +26,6 @@ items.
   * Description
 #### 4. Purchase page
   * Total price
-  * Price per product
+  * Price per product .
 
 
