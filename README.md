@@ -14,9 +14,11 @@ items.
 
 ### App components 
 
-* login register page
+1 login register page
 * info page
 * products page
 * purchase page
+  * Total price
+  * Price per product
 * user details page
 
