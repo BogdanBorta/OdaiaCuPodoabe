@@ -12,10 +12,11 @@ items.
 * reasonable prices
 * create your own design 
 
-## App components 
+### App components 
 
 * login register page
 * info page
 * products page
 * purchase page
 * user details page
+
