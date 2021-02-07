@@ -14,18 +14,18 @@ items.
 
 ### App components 
 
-1 Login register page
-2 Info page
+#### 1. Login/register page
+#### 2. User details page
   * Orders history
   * My cards
   * My favourite things
-3 Products page
+#### 3. Products page
   * Price
   * Category
   * Availability
   * Description
-4 Purchase page
+#### 4. Purchase page
   * Total price
   * Price per product
-5 User details page
+
 
