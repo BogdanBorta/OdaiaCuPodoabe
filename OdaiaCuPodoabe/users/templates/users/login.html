@@ -1,23 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title><h1>Log In Page</h1></title>
 </head>
 <body>
-    {% block content %}
-        <div class="content-section">
-            <form method=""POST">
-                { %csrf_token %}
-                <fieldset class="form-group">
-                    <legend class="border-bottom mb-5">Log In</legend>
-                    {{ form|crispy }}
-                </fieldset>
-                <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit"> Log In </button>
-                </div>
-            </form>
-        </div>
-    {% endblock content %}
+    <h2>pagina de log in</h2>
 </body>
 </html>
 
