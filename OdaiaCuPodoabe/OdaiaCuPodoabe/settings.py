@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products',
-    'accounts',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +121,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL='/products'
+LOGOUT_REDIRECT_URL='/users/login'
