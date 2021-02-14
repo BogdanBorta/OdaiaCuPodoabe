@@ -4,15 +4,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
 
-def login(request):
-
-    return render(request, 'users/login.html')
-
-
-def logout(request):
-    return render(request, 'users/logout.html')
-
-
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -30,4 +21,4 @@ def register(request):
 
 
 def home(request):
-    return render(request, 'users/home.html')
+    return render(request, 'users/home2.html')
