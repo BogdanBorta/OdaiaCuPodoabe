@@ -8,16 +8,28 @@
 </head>
 <body>
     <div class=content>
-        <img width="100px" src="{% static 'img/ocp.jpg' %}" alt="Imaginea de background">
+        <!-- <img width="100px" src="{% static 'img/ocp.jpg' %}" alt="Imaginea de background"> -->
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend> Inscrie-te acum</legend>
-                {{form.as_p}}
+                {% for field in form %}
+                <p>
+                    {{ field.label_tag }}<br>
+                    {{ field }}
+                    {% if field.help_text %}
+                    <small style="color: grey">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                </p>
+                {% endfor %}
+                <div class='form-group'>
+                    <button class='sign-up button' type="submit"> Inregistreaza-te </button>
+                </div>    
             </fieldset>     
-            <div class='form-group'>
-                <button class='sign-up button' type="submit"> Inregistreaza-te </button>
-            </div>
+            
         </form>    
         <small> Ai cont deja? <a href="{% url 'login' %}"> Intra in cont </a></small>
     </div>
