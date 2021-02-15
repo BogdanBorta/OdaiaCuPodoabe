@@ -5,6 +5,13 @@
     <title>Adauga un produs</title>
 </head>
 <body>
-    <h1> Create page </h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <h3><legend>{{ form.name.label}}</legend>{{form.name}} </h3>
+        <h3><legend>{{ form.price.label}}</legend>{{form.price}} </h3>
+        <h3><legend>{{ form.description.label}}</legend>{{form.description}} </h3>
+        <h3><legend>{{ form.image.label}}</legend>{{form.image}} </h3>
+
+        <input type="submit" value="Create">
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 {% load static %}
 <head>
     <meta charset="UTF-8">
@@ -9,6 +9,7 @@
         <table style="width:100%">
             <thead style="text-align:justify">
                 <tr>
+                    <th> ID </th>
                     <th> Nume </th>
                     <th> Pret </th>
                     <th> Descriere</th>
@@ -18,13 +19,15 @@
             <tbody>
                 {% for product in product_list %}
                     <tr>
+                        <td>{{product.id}}</td>
                         <td>{{product.name}}</td>
                         <td>{{product.price}}</td>
                         <td>{{product.description}}</td>
-                        <td><img src="{{ MEDIA_URL }}{{ product.image }}" width="200px"></td>
+                        <td><img src="{{ MEDIA_URL }}{{ product.image.url }}" width="70px"></td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
+        <a href="/products/create_product">Create!</a>
 </body>
 </html>
