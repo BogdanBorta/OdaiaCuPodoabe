@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ro">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Lista produselor</title>
+</head>
+<body>
+        <table style="width:100%">
+            <thead style="text-align:justify">
+                <tr>
+                    <th> Nume </th>
+                    <th> Pret </th>
+                    <th> Descriere</th>
+                    <th> Image </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in product_list %}
+                    <tr>
+                        <td>{{product.name}}</td>
+                        <td>{{product.price}}</td>
+                        <td>{{product.description}}</td>
+                        <td><img src="{{ MEDIA_URL }}{{ product.image }}" width="200px"></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</body>
+</html>
