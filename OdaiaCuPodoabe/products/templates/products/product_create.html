@@ -7,11 +7,13 @@
 <body>
     <form action="" method="post">
         {% csrf_token %}
-        <h3><legend>{{ form.name.label}}</legend>{{form.name}} </h3>
-        <h3><legend>{{ form.price.label}}</legend>{{form.price}} </h3>
-        <h3><legend>{{ form.description.label}}</legend>{{form.description}} </h3>
-        <h3><legend>{{ form.image.label}}</legend>{{form.image}} </h3>
+        <h3><legend>Nume</legend>{{form.name}} </h3>
+        <h3><legend>Preț</legend>{{form.price}} </h3>
+        <h3><legend>Descriere</legend>{{form.description}} </h3>
+        <h3><legend>Încarcă o imagine</legend>{{form.image}} </h3>
 
-        <input type="submit" value="Create">
+        <input type="submit" value="Create"><hr>
+        <button><a href="/products/products_list">Înapoi la lista produselor</a></button>
+    </form>
 </body>
 </html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Detalii produs</title>
+</head>
+<body>
+    id: {{ product_detail.id }}<br/>
+    name: {{ product_detail.name }}<br/>
+    price: {{ product_detail.price }}<br/>
+    <img src="{{ MEDIA_URL }}{{ product_detail.image.url }}" width="500px">
+    <br>
+    <button><a href="/products/products_list">Înapoi la lista produselor</a></button>
+</body>
+</html>
