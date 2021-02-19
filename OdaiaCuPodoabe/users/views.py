@@ -5,15 +5,15 @@ from django.contrib import messages
 
 def login(request):
     form = AuthenticationForm
-    return render(request, 'registration/login.html', {'form': form})
+    return render(request, 'users/login.html', {'form': form})
 
 def logout(request):
     logout(request)
-    return redirect("products/home.html")
+    return redirect("products/welcome.html")
 
 
 def welcome_page(request):
-    return render(request, 'registration/home.html',)
+    return render(request, 'users/welcome.html',)
 
 def register(request):
     if request.method == 'POST':
@@ -23,11 +23,11 @@ def register(request):
             # stocam intr-o variabila username-ul completat de utilizator
             username = form.cleaned_data.get('username')
             # afisam un mesaj de creare a contului
-            messages.success(request, f'Account created for {username}!')
+            messages.success(request, f'Contul {username} a fost creat!')
             # redirectionam userul catre pagina cu produse
-            return redirect('products_home')
+            return redirect('home')
     else:
         form = UserCreationForm()
-    return render(request, 'registration/register.html', {'form': form})
+    return render(request, 'users/register.html', {'form': form})
 
 

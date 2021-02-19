@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-{% load static %}
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %} - Produse {% endblock title %}
+
+{% block content %}
     {% for product in product_list %}
         <h4>Nume : {{ product.name }}</h4>
         <h4>Pret : {{ product.price }}</h4>
         <h4>Descriere : {{ product.description }}</h4>
         <img src="{{MEDIA_URL }}{{ product.image.url}}" width="200px">
     {% endfor %}
-
-
-</body>
-</html>
+{% endblock content %}
