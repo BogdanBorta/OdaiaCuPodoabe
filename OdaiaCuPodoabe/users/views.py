@@ -12,6 +12,9 @@ def logout(request):
     return redirect("products/home.html")
 
 
+def welcome_page(request):
+    return render(request, 'registration/home.html',)
+
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)

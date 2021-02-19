@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from .models import Product
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import CreateView, ListView, DetailView, TemplateView
 
 
 def home(request):
-    product_list = Product.objects.all()
-    return render(request, 'products/home2.html', context={'product_list': product_list})
+    context = {'product_list': Product.objects.all()}
+    return render(request, 'products/home2.html', context)
 
 
 class ProductCreateView(CreateView):
@@ -28,4 +28,10 @@ class ProductDetailView(DetailView):
     context_object_name = 'product_detail'
 
 
+class ProductTemplateView(TemplateView):
+    template_name = 'base.html'
+
+    def get_context_data(self, **kwargs):
+        context =super().get_context_data(**kwargs)
+        return context
 

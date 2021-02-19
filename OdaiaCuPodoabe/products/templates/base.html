@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Odaia Cu Podoabe</title>
+    <title>Odaia Cu Podoabe {% block title %}{% endblock title %}</title>
 </head>
 <body>
-    <div class=wrapper">
+    <div class="base-content-div">
+        <h1>Lista produse</h1>
         {% block content %}
+        {{ home }}
         {% endblock %}
     </div>
 </body>

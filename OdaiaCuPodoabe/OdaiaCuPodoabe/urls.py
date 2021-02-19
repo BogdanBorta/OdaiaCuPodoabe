@@ -17,12 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from products.views import ProductTemplateView
+from users.views import welcome_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include('products.urls')),
     path('users/', include('users.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-
+    path('home',ProductTemplateView.as_view()),
+    path('',welcome_page, name='welcome_page')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

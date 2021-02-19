@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 {% load static %}
+
 <head>
     <meta charset="UTF-8">
-    <title>Lista produselor</title>
+    <title>{% block title %} - Produse {% endblock title %}</title>
 </head>
+{% block content %}
 <body>
         <table style="width:50%">
             <thead style="text-align:justify">
@@ -36,4 +37,4 @@
         </table>
         <button type="button"><a href="/products/create_product">Adauga un produs</a></button>
 </body>
-</html>
+{% endblock content %}
