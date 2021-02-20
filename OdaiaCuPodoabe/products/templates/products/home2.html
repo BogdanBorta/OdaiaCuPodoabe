@@ -28,5 +28,13 @@
         <div class="header" id=myHeader">
         <h1> Odaia Cu Podoabe </h1>
         </div>
+
+        {% for product in product_list %}
+        <h4>Nume : {{ product.name }}</h4>
+        <h4>Pret : {{ product.price }}</h4>
+        <h4>Descriere : {{ product.description }}</h4>
+        <img src="{{MEDIA_URL }}{{ product.image.url}}" width="200px">
+    {% endfor %}
+
     </body>
 </html>

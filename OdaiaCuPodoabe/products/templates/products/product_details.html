@@ -6,16 +6,17 @@
     </head>
     <body>
         <h2> Details </h2>
-        <ul>
-            <li> PK: {{product.pk }} </li>
-            <li> Name: {{ product.name }} </li>
-            <li> Price: {{ product.price }} </li>
-            <li> Category: {{ product.category.name }} </li>
-        </ul>
+
+    id: {{ product_detail.id }}<br/>
+    name: {{ product_detail.name }}<br/>
+    price: {{ product_detail.price }}<br/>
+    <img src="{{ MEDIA_URL }}{{ product_detail.image.url }}" width="500px">
     <br>
 
-    <a href="{% url 'product_update' product.pk %}">Update product</a>
-    <a href="{% url 'product_delete' product.pk %}">Delete product</a>
+        <a href="{% url 'products:product_update' product_detail.pk %}">Update product</a>
+        <a href="{% url 'products:product_delete' product_detail.pk %}">Delete product</a>
 
+
+    <button><a href="/products/products_list">Înapoi la lista produselor</a></button>
     </body>
 </html>
