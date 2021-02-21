@@ -3,25 +3,26 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login , logout
 from django.contrib import messages
 
-def login(request):
+def login_view(request):
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
         user = authenticate(username=username,password=password)
         if user != None:
             login(request, user)
-    return render(request, 'registration/login.html')
+            return redirect("products:product_list")
+    return render(request, 'users/login.html')
 
 
-def logout(request):
+def logout_view(request):
     logout(request)
-    return redirect("products/welcome.html")
+    return redirect("users/welcome.html")
 
 
 def welcome_page(request):
     return render(request, 'users/welcome.html',)
 
-def register(request):
+def register_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
