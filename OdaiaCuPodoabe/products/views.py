@@ -3,7 +3,9 @@ from .models import Product
 from django.views.generic.detail import DetailView
 from django.views.generic import CreateView, ListView
 from django.views.generic.edit import DeleteView, UpdateView
+from django.views.generic import CreateView, ListView, DetailView, TemplateView
 from django.urls import reverse_lazy
+
 
 def home(request):
     search = request.GET.get('search')
@@ -31,12 +33,21 @@ class ProductDetailView(DetailView):
     template_name = "products/product_details.html"
     context_object_name = "product_detail"
 
+
 class ProductDeleteView(DeleteView):
     model = Product
     template_name = "products/product_delete.html"
     context_object_name = "product"
     success_url = reverse_lazy("products:product_list")
     fields = ["name","price","description","image"]
+
+class ProductTemplateView(TemplateView):
+    template_name = 'base.html'
+
+    def get_context_data(self, **kwargs):
+        context =super().get_context_data(**kwargs)
+        return context
+
 
 class ProductUpdateView(UpdateView):
     model = Product
