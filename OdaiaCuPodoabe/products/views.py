@@ -10,11 +10,10 @@ from django.urls import reverse_lazy
 def home(request):
     search = request.GET.get('search')
     if search:
-        name = Product.objects.filter(name__icontains=search)
+        product_list = Product.objects.filter(name__icontains=search)
     else:
-        Product.objects.all
-    product_list = Product.objects.all()
-    return render(request, 'products/home2.html', context={'product_list': product_list})
+        product_list = Product.objects.all()
+    return render(request, 'products/products_list.html', context={'product_list': product_list})
 
 
 class ProductCreateView(CreateView):
@@ -30,7 +29,7 @@ class ProductListView(ListView):
 
 class ProductDetailView(DetailView):
     model = Product
-    template_name = "products/product_details.html"
+    template_name = "products/product_detail.html"
     context_object_name = "product_detail"
 
 
