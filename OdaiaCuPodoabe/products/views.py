@@ -6,6 +6,11 @@ from django.views.generic.edit import DeleteView, UpdateView
 from django.urls import reverse_lazy
 
 def home(request):
+    search = request.GET.get('search')
+    if search:
+        name = Product.objects.filter(name__icontains=search)
+    else:
+        Product.objects.all
     product_list = Product.objects.all()
     return render(request, 'products/home2.html', context={'product_list': product_list})
 
