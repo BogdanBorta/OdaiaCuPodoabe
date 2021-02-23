@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Adauga un produs</title>
-</head>
-<body>
-    <form action="" method="post">
-        {% csrf_token %}
-        <h3><legend>Nume</legend>{{form.name}} </h3>
-        <h3><legend>Preț</legend>{{form.price}} </h3>
-        <h3><legend>Descriere</legend>{{form.description}} </h3>
-        <h3><legend>Încarcă o imagine</legend>{{form.image}} </h3>
+    <head>
+        <meta charset="UTF-8">
+        <title>Adauga un produs</title>
+    </head>
+    <body>
+        <form action="" method="post">
+            {% csrf_token %}
+            <h3>Nume <br> {{form.name}} </h3>
+            <h3>Preț <br> {{form.price}} </h3>
+            <h3>Descriere <br> {{form.description}} </h3>
+            <h3>Încarcă o imagine <br> {{form.image}} </h3>
+            <input type="submit" value="Create"/>
+            <button><a href="/products/products_list">Înapoi la lista produselor</a></button>
 
-        <input type="submit" value="Create"><hr>
-        <button><a href="/products/products_list">Înapoi la lista produselor</a></button>
-    </form>
-</body>
+        </form>
+    </body>
 </html>

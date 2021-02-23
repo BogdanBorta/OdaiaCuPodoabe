@@ -3,16 +3,22 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login , logout
 from django.contrib import messages
 
-def login(request):
-    form = AuthenticationForm
-    return render(request, 'registration/login.html', {'form': form})
+def login_view(request):
+    if request.method == "POST":
+        print(request.POST)
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(username=username, password=password)
+        if user != None:
+            login(request, user)
+            return redirect('products:home')
+    return render(request, 'registration/login.html')
 
-def logout(request):
+def logout_view(request):
     logout(request)
-    return redirect("products/home.html")
+    return redirect("products:home")
 
-
-def register(request):
+def register_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -21,10 +27,10 @@ def register(request):
             username = form.cleaned_data.get('username')
             # afisam un mesaj de creare a contului
             messages.success(request, f'Account created for {username}!')
-            # redirectionam userul catre pagina cu produse
-            return redirect('products_home')
-    else:
-        form = UserCreationForm()
+            # redirectionam userul catre pagina cu produse*
+            return redirect('products:home')
+        else:
+            form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
 
