@@ -1,39 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-{% load static %}
-<head>
-    <meta charset="UTF-8">
-    <title>Lista produselor</title>
-</head>
-<body>
-        <table style="width:50%">
-            <thead style="text-align:justify">
-                <tr>
-                    <th> ID </th>
-                    <th> Nume </th>
-                    <th> Pret </th>
-                    <th> Descriere</th>
-                    <th> Image </th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for product in product_list %}
-                    <tr>
-                        <td>{{product.id}}</td>
-                        <td>{{product.name}}</td>
-                        <td>{{product.price}}</td>
-                        <td>{{product.description}}</td>
-                        <td><img src="{{ MEDIA_URL }}{{ product.image.url }}" width="70px"></td>
-                        <td>
-                            <button type="button"> <a href="{% url 'products:product_update' product.id %}"> Modifică </a></button>
-                        </td>
-                        <td>
-                            <button type="button"><a href="{% url 'products:product_details' product.id %}"> Detalii </a> </button>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <button type="button"><a href="/products/create_product">Adauga un produs</a></button>
-</body>
-</html>
+
+{% extends "products/base.html" %}
+{% block content %}
+<div class="container-fluid" style="height:70%">
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for product in product_list %}
+  <div class="col">
+    <div class="card h-100">
+        <a href=" {% url 'products:product_details' product.id %}">
+            <img src="{{ MEDIA_URL }}{{ product.image.url }}" class="card-img-top" alt="...">
+        </a>
+        <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">{{product.description}}</p>
+        </div>
+        <div class="card-footer ">
+            <p>Preț: {{product.price}} RON </p>
+        </div>
+    </div>
+  </div>
+      {% endfor %}
+</div>
+</div>
+
+{% endblock %}
+

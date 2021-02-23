@@ -1,13 +1,17 @@
 from django.shortcuts import render
 from .models import Product
-from django.views.generic.detail import DetailView
-from django.views.generic import ListView
-from django.views.generic.edit import DeleteView, UpdateView, CreateView
+from django.views.generic.edit import DeleteView, UpdateView
+from django.views.generic import CreateView, ListView, DetailView, TemplateView
 from django.urls import reverse_lazy
 
+
 def home(request):
-    product_list = Product.objects.all()
-    return render(request, 'products/home2.html', context={'product_list': product_list})
+    search = request.GET.get('search')
+    if search:
+        product_list = Product.objects.filter(name__icontains=search)
+    else:
+        product_list = Product.objects.all()
+    return render(request, 'products/products_list.html', context={'product_list': product_list})
 
 
 class ProductCreateView(CreateView):
@@ -24,9 +28,8 @@ class ProductListView(ListView):
 
 class ProductDetailView(DetailView):
     model = Product
-    template_name = "products/product_details.html"
-    context_object_name = "product_detail"
-    fields = '__all__'
+    template_name = "products/product_detail.html"
+    context_object_name = "product_details"
 
 class ProductDeleteView(DeleteView):
     model = Product
@@ -34,6 +37,14 @@ class ProductDeleteView(DeleteView):
     context_object_name = "product"
     success_url = reverse_lazy("products:product_list")
     fields = ["name","price","description","image"]
+
+class ProductTemplateView(TemplateView):
+    template_name = 'base.html'
+
+    def get_context_data(self, **kwargs):
+        context =super().get_context_data(**kwargs)
+        return context
+
 
 class ProductUpdateView(UpdateView):
     model = Product

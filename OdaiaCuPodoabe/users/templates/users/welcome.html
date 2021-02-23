@@ -32,12 +32,21 @@
             align-self:center;
             width: 350px;
             height: 100px;
-            border-radius: 50%;
+            border-radius: 30%;
         }
     </style>
 </head>
 <body>
     <!-- <img width="1000px" src="{% static 'img/ocp.jpg' %}" alt="Imaginea de background">  -->
-    <button class="enter-button" type="submit" url='login.html'><a href="login.html" ></a> Intra in odaie </button>
+    {% if not user.is_authenticated %}
+    <button class="enter-button">
+        <a href="users/login" >Intra in odaie</a>
+    </button>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <button class="enter-button">
+        <a href="products/products_list" >Intra in odaie</a>
+    </button>
+    {% endif %}
 </body>
 </html>

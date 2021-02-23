@@ -1,0 +1,39 @@
+{% extends "products/base.html" %}
+{% block content %}
+
+{% if not user.is_authenticated %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Log In</h5>
+            <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="exampleInputEmail1">Username</label>
+                <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Introdu un nume de utilizator">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your username with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Pasword</label>
+                <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Introdu o parola">
+            </div>
+<!--                <div class="form-group form-check">-->
+<!--                <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+<!--                <label class="form-check-label" for="exampleCheck1">Ține-mă minte</label>-->
+<!--                </div>-->
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% if user.is_authenticated %}
+<h1>Esti deja logat! <a href="{% url 'products:product_list' %}">Vezi lista produselor</a></h1>
+{% endif %}
+
+{% endblock %}
