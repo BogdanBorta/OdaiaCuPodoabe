@@ -1,5 +1,7 @@
 {% extends "products/base.html" %}
 {% block content %}
+
+{% if not user.is_authenticated %}
 <div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -28,5 +30,10 @@
       </div>
     </div>
   </div>
+{% endif %}
+
+{% if user.is_authenticated %}
+<h1>Esti deja logat! <a href="{% url 'products:product_list' %}">Vezi lista produselor</a></h1>
+{% endif %}
 
 {% endblock %}
