@@ -1,13 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'products/base.html' %}
 
 {% block title %} - Detalii produs {% endblock title %}
 
 {% block content %}
-{% load static %}
-    id: {{ product_detail.id }}<br/>
-    name: {{ product_detail.name }}<br/>
-    price: {{ product_detail.price }}<br/>
-    <img src="{{ MEDIA_URL }}{{ product_detail.image.url }}" width="500px">
-    <br>
+
+    Denumire produs: {{ product_details.name }}<br/>
+    Pret: {{ product_details.price }}<br/>
+    <img src="{{ MEDIA_URL }}{{ product_details.image.url }}" width="500px">
+    </br>
+    <h4>Decriere</h4>
+    <p>{{ product_details.description}}</p>
+
     <button><a href="/products/products_list">Înapoi la lista produselor</a></button>
 {% endblock content %}

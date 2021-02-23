@@ -6,19 +6,21 @@
     {% for product in product_list %}
   <div class="col">
     <div class="card h-100">
-      <img src="{{ MEDIA_URL }}{{ product.image.url }}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{product.name}}</h5>
-        <p class="card-text">{{product.description}}</p>
-    </div>
-        <div class="card-footer text-muted">
-            {{product.price}}
+        <a href=" {% url 'products:product_details' product.id %}">
+            <img src="{{ MEDIA_URL }}{{ product.image.url }}" class="card-img-top" alt="...">
+        </a>
+        <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">{{product.description}}</p>
+        </div>
+        <div class="card-footer ">
+            <p>Preț: {{product.price}} RON </p>
         </div>
     </div>
   </div>
       {% endfor %}
 </div>
 </div>
-<button type="button"><a href="/products/product_create">Adauga un produs</a></button>
+
 {% endblock %}
 
