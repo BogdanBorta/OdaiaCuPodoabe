@@ -4,6 +4,7 @@
 {% block content %}
     <div class=content>
         <!-- <img width="100px" src="{% static 'img/ocp.jpg' %}" alt="Imaginea de background"> -->
+        {% if not user.is_authenticated %}
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
@@ -27,6 +28,10 @@
             
         </form>    
         <small> Ai cont deja? <a href="{% url 'login_view' %}"> Intra in cont </a></small>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <h2>Ești deja inregistrat cu numele de utilizator <strong>{{ request.user }}</strong></h2>
+        {% endif %}
     </div>
 {% endblock content %}}
 

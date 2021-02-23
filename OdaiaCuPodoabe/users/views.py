@@ -34,7 +34,7 @@ def register_view(request):
             # afisam un mesaj de creare a contului
             messages.success(request, f'Contul {username} a fost creat!')
             # redirectionam userul catre pagina cu produse
-            return redirect('users:login')
+            return redirect('login_view')
     else:
         form = UserCreationForm()
     return render(request, 'users/register.html', {'form': form})
