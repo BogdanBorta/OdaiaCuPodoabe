@@ -1,12 +1,7 @@
-<!DOCTYPE html>
+{% extends 'products/base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Inregistreaza-te</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
-</head>
-<body>
+
+{% block content %}
     <div class=content>
         <!-- <img width="100px" src="{% static 'img/ocp.jpg' %}" alt="Imaginea de background"> -->
         <form method="POST">
@@ -31,8 +26,7 @@
             </fieldset>     
             
         </form>    
-        <small> Ai cont deja? <a href="{% url 'login' %}"> Intra in cont </a></small>
+        <small> Ai cont deja? <a href="{% url 'login_view' %}"> Intra in cont </a></small>
     </div>
-</body>
-</html>
+{% endblock content %}}
 
