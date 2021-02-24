@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-
+from .forms import UserForm
 
 def login_view(request):
     if request.method == "POST":
@@ -26,7 +25,7 @@ def welcome_page(request):
 
 def register_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserForm(request.POST)
         if form.is_valid():
             form.save()
             # stocam intr-o variabila username-ul completat de utilizator
@@ -36,5 +35,5 @@ def register_view(request):
             # redirectionam userul catre pagina cu produse
             return redirect('login_view')
     else:
-        form = UserCreationForm()
+        form = UserForm()
     return render(request, 'users/register.html', {'form': form})

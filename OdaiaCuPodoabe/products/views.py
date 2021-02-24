@@ -21,16 +21,16 @@ class HomePageView(TemplateView):
 
 class SearchResultsView(ListView):
     model = Product
-    template_name = 'products/search_results.html'
+    template_name = 'products/products_list.html'
 
     def get_queryset(self):
         query = self.request.GET.get('search')
         if query:
             products_list = Product.objects.filter(
                 Q(name__icontains=query) | Q(description__icontains=query)
-            ).order_by('-price')
+            ).order_by('price')
         else:
-            products_list = Product.objects.all().order_by('-price')
+            products_list = Product.objects.all().order_by('price')
         return products_list
 
 

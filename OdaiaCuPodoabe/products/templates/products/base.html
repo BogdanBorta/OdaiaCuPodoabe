@@ -37,7 +37,7 @@
     </ul>
         {% if user.is_authenticated %}
 <!--        SEARCH BAR-->
-        <form action="{% url 'products:search_results' %}" method="get">
+        <form action="{% url 'products:product_list' %}" method="get">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <input name='search' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
