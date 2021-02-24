@@ -10,5 +10,13 @@ class UserForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2')
-
+        fields = ('first_name', 'last_name', 'username',
+                  'email', 'password1', 'password2')
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'user_form'}),
+            'last_name': forms.TextInput(attrs={'class': 'user_form'}),
+            'username': forms.TextInput(attrs={'class': 'user_form'}),
+            'email': forms.TextInput(attrs={'class': 'user_form'}),
+            'password1': forms.TextInput(attrs={'class': 'user_form'}),
+            'password2': forms.TextInput(attrs={'class': 'user_form'})
+        }
