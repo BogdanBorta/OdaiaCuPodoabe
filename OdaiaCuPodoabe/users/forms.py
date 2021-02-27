@@ -12,6 +12,8 @@ class UserForm(UserCreationForm):
         model = User
         fields = ('first_name', 'last_name', 'username',
                   'email', 'password1', 'password2')
+
+        # Am adaugat clasa campurilor, pentru a le putea selecta in css(nu functioneaza)
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'user_form'}),
             'last_name': forms.TextInput(attrs={'class': 'user_form'}),

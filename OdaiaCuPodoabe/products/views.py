@@ -15,13 +15,9 @@ from django.db.models import Q
 #     return render(request, 'products/home.html', context={'product_list': product_list})
 
 
-class HomePageView(TemplateView):
-    template_name = 'base.html'
-
-
 class SearchResultsView(ListView):
     model = Product
-    template_name = 'products/products_list.html'
+    template_name = 'products/search_results.html'
 
     def get_queryset(self):
         query = self.request.GET.get('search')
