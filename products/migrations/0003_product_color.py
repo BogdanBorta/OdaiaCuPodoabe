@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='product',
             name='color',
-            field=models.CharField(choices=[('NONE', 'None'), ('WHITE', 'White'), ('BLACK', 'Black'), ('PINK', 'Pink'), ('BLUE', 'Blue'), ('YELLOW', 'Yellow'), ('GREY', 'Grey'), ('RED', 'Red'), ('GREEN', 'Green'), ('PURPLE', 'Purple'), ('ORANGE', 'Orange')], default=('NONE', 'None'), max_length=10),
+            field=models.CharField(choices=[('NONE', 'None'), ('WHITE', 'White'), ('BLACK', 'Black'), ('PINK', 'Pink'), ('BLUE', 'Blue'), ('YELLOW', 'Yellow'), ('GREY', 'Grey'), ('RED', 'Red'), ('GREEN', 'Green'), ('PURPLE', 'Purple'), ('ORANGE', 'Orange')], default=('NONE', 'None'), max_length=50),
         ),
     ]

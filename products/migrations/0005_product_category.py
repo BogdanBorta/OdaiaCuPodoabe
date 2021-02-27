@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='product',
             name='category',
-            field=models.CharField(choices=[('CANI', 'Căni'), ('BORCANE', 'Borcane'), ('PAHARE', 'Pahare'), ('BIJUTERII', 'Bijuterii'), ('FIGURINE', 'Figurine'), ('TERMOSURI', 'Termosuri'), ('ALBUME', 'Albume foto'), ('ALTELE', 'Alte obiecte')], default=('ALTELE', 'Alte obiecte'), max_length=10),
+            field=models.CharField(choices=[('CANI', 'Căni'), ('BORCANE', 'Borcane'), ('PAHARE', 'Pahare'), ('BIJUTERII', 'Bijuterii'), ('FIGURINE', 'Figurine'), ('TERMOSURI', 'Termosuri'), ('ALBUME', 'Albume foto'), ('ALTELE', 'Alte obiecte')], default=('ALTELE', 'Alte obiecte'), max_length=100),
         ),
     ]
