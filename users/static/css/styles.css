@@ -9,7 +9,7 @@
 }
 
 body {
-  background-image: url("bg_pic.png");
+  background-image: url("../img/bg_pic.png");
 }
 
 .user_form {
