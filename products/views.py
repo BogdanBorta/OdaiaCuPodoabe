@@ -6,25 +6,20 @@ from django.urls import reverse_lazy
 from django.db.models import Q
 
 
-# def home(request):
-#     search = request.GET.get('search')
-#     if search:
-#         product_list = Product.objects.filter(name__icontains=search)
-#     else:
-#         product_list = Product.objects.all()
-#     return render(request, 'products/home.html', context={'product_list': product_list})
-
-
 class SearchResultsView(ListView):
     model = Product
     template_name = 'products/search_results.html'
 
     def get_queryset(self):
         query = self.request.GET.get('search')
+
         if query:
             products_list = Product.objects.filter(
-                Q(name__icontains=query) | Q(description__icontains=query)
+                Q(name__icontains=query) | Q(description__icontains=query) | Q(price__icontains=query)
             ).order_by('price')
+            # If the searched word does not exists, display all products ordered by price (high to low)
+            if not products_list.exists():
+                products_list = Product.objects.all().order_by('-price')
         else:
             products_list = Product.objects.all().order_by('price')
         return products_list

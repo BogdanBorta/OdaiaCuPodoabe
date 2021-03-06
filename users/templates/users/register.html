@@ -3,23 +3,17 @@
 
 {% block style%}
 <link rel="stylesheet" href="{% static 'css/styles.css'%}">
-<style>
-    body{background: url(../static/img/bg_pic.png)}
-    body{background-size: cover}
-    body{background-repeat: no-repeat}
-    body{height: 80%}
-</style>
 {% endblock style %}
 
 
 {% block content %}
-    <div class=content-register style="opacity: 0.75">
-        <!-- <img width="100px" src="{% static 'img/ocp.jpg' %}" alt="Imaginea de background"> -->
+<div class="register-div">
+    <div class='content-register' style="opacity: 0.75">
         {% if not user.is_authenticated %}
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="inscrie"> Inscrie-te acum</legend>
+                <legend> <solid>Înscrie-te acum</solid></legend>
                 {% for field in form %}
                 <p>
                     {{ field.label_tag }}<br>
@@ -30,16 +24,17 @@
                 </p>
                 {% endfor %}
                 <div class='form-group'>
-                    <button class='sign-up button' type="submit"> Inregistreaza-te </button>
+                    <button id='register-button' type="submit"> Inregistrează-te </button>
                 </div>    
             </fieldset>     
             
         </form>    
-        <small> Ai cont deja? <a href="{% url 'login_view' %}"> Intra in cont </a></small>
+        <small> Ai cont deja? <a href="{% url 'login_view' %}"> Intră în cont </a></small>
         {% endif %}
         {% if user.is_authenticated %}
-        <h2>Ești deja inregistrat cu numele de utilizator <strong>{{ request.user }}</strong></h2>
+        <h2>Ești deja înregistrat cu numele de utilizator <strong>{{ request.user }}</strong></h2>
         {% endif %}
     </div>
+</div>
 {% endblock content %}}
 
