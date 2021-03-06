@@ -28,8 +28,9 @@ class SearchResultsView(ListView):
 class ProductCreateView(CreateView):
     template_name = 'products/product_create.html'
     model = Product
-    fields = "__all__"
-    success_url = reverse_lazy('products:product_list')
+    fields = '__all__'
+    success_url = reverse_lazy("products:product_list")
+    context_object_name = "product"
 
 
 class ProductListView(ListView):
@@ -42,7 +43,6 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = "products/product_detail.html"
     context_object_name = "product_details"
-
 
 class ProductDeleteView(DeleteView):
     model = Product
