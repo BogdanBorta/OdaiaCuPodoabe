@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import UserForm
+from django.contrib.auth.decorators import login_required
+
 
 def login_view(request):
     if request.method == "POST":
@@ -21,6 +23,10 @@ def logout_view(request):
 
 def welcome_page(request):
     return render(request, 'users/welcome.html', )
+
+@login_required
+def home(request):
+    return render(request, 'users/home.html')
 
 
 def register_view(request):

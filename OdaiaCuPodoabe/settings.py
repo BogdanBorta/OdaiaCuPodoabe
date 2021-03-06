@@ -66,6 +66,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends', # used for social auth
+                'social_django.context_processors.login_redirect', # used for social auth
             ],
         },
     },
@@ -127,3 +129,26 @@ LOGIN_REDIRECT_URL='/products/home'
 LOGOUT_REDIRECT_URL='/users/login'
 
 django_heroku.settings(locals())
+
+# Social authentication
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+LOGIN_URL = '/users/login'
+LOGOUT_URL = 'users/logout'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '792318268046823'
+SOCIAL_AUTH_FACEBOOK_SECRET = '70c772141ba9be2a58262c1de25c4908'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+  'fields': 'id, name, email, picture.type(large), link'
+}
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
+]
