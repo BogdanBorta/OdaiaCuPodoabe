@@ -1,8 +1,11 @@
+import django
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import UserForm
+from .forms import UserRegistrationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserChangeForm
+
 
 
 def login_view(request):
@@ -10,9 +13,10 @@ def login_view(request):
         username = request.POST["username"]
         password = request.POST["password"]
         user = authenticate(username=username, password=password)
-        if user is not None:
+        if user is not None and username != 'admin':
             login(request, user)
             return redirect("products:product_list")
+
     return render(request, 'users/login.html', {})
 
 
@@ -24,6 +28,7 @@ def logout_view(request):
 def welcome_page(request):
     return render(request, 'users/welcome.html', )
 
+
 @login_required
 def home(request):
     return render(request, 'users/home.html')
@@ -31,7 +36,7 @@ def home(request):
 
 def register_view(request):
     if request.method == 'POST':
-        form = UserForm(request.POST)
+        form = UserRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
             # stocam intr-o variabila username-ul completat de utilizator
@@ -41,5 +46,23 @@ def register_view(request):
             # redirectionam userul catre pagina cu produse
             return redirect('login_view')
     else:
-        form = UserForm()
+        form = UserRegistrationForm()
     return render(request, 'users/register.html', {'form': form})
+
+
+def profile_view(request):
+    context = {'user': request.user}  # requesting the user object
+    return render(request, 'users/profile.html', context)
+
+def edit_profile_view(request):
+    if request.method == "POST":
+        form = UserChangeForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return redirect('/users/profile/')
+    else:
+        form = UserChangeForm(instance=request.user)
+        context={'form':form}
+        return render(request, 'users/edit_profile.html', context)
+
