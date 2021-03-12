@@ -1,0 +1,17 @@
+{% extends "products/base.html" %}
+{% block title %} User profile {% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <h1>Your profile</h1>
+    <p> Prenume: {{ user.first_name }}</p>
+    <p> Nume: {{ user.last_name }} </p>
+    <p> Username: {{ user.username }} </p>
+    <p> Email: {{ user.email }} </p>
+    <a href="{% url 'edit_profile_view' %}"> Editeaza profilul</a>
+</div>
+
+
+{% endblock %}

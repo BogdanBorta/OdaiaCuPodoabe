@@ -61,7 +61,8 @@
   </div>
 </div>
 
-{% endif %} {% if user.is_authenticated %}
+{% endif %}
+{% if user.is_authenticated %}
 <h1>
   Esti deja logat!
   <a href="{% url 'products:product_list' %}">Vezi lista produselor</a>
