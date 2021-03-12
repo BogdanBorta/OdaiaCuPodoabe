@@ -1,0 +1,20 @@
+{% extends "products/base.html" %}
+{% load static %}
+
+{% block content %}
+<form action="">
+<select name="categ">
+    <option disabled="true" selected> -- Select category --</option>
+    <option>Căni</option>
+    <option>Borcane</option>
+    <option>Pahare</option>
+    <option>Bijuterii</option>
+    <option>Figurine</option>
+    <option>Termosuri</option>
+    <option>Albume foto</option>
+    <option>Alte obiecte</option>
+</select>
+</form>
+<button type="submit" > Sumbmit </button>
+<p>{{categories}}</p>
+{% endblock content %}
