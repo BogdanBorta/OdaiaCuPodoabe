@@ -23,9 +23,7 @@ class SearchResultsView(ListView):
             products_list = Product.objects.filter(
                 Q(name__icontains=query) | Q(description__icontains=query) | Q(price__icontains=query)
             ).order_by('price')
-            # If the searched word does not exists, display all products ordered by price (high to low)
-            if not products_list.exists():
-                products_list = Product.objects.all().order_by('-price')
+
         else:
             products_list = Product.objects.all().order_by('price')
         return products_list

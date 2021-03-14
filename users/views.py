@@ -16,7 +16,9 @@ def login_view(request):
         if user is not None and username != 'admin':
             login(request, user)
             return redirect("products:product_list")
-
+        elif username == 'admin':
+            login(request, user)
+            return redirect('admin:index')
     return render(request, 'users/login.html', {})
 
 
