@@ -6,10 +6,10 @@ from django.urls import reverse_lazy
 from django.db.models import Q
 
 
-def category_page(request):
-    categories = request.GET.get("categ")
-    print(categories)
-    return render(request, "products/product_categ.html", {'categories': categories})
+# def category_page(request):
+#     categories = request.GET.get("categ")
+#     print(categories)
+#     return render(request, "products/product_categ.html", {'categories': categories})
 
 
 class SearchResultsView(ListView):
@@ -18,7 +18,7 @@ class SearchResultsView(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('search')
-
+        print(query)
         if query:
             products_list = Product.objects.filter(
                 Q(name__icontains=query) | Q(description__icontains=query) | Q(price__icontains=query)
@@ -29,19 +29,22 @@ class SearchResultsView(ListView):
         return products_list
 
 
-# class ProductCategView(ListView):
-#     template_name = 'products/product_categ.html'
-#     model = Product
-#     context_object_name = 'product_categ'
-#
-#     def get_queryset(self):
-#         query = self.request.GET.get('categ')
-#         print('my quesry is:', query)
-#
-#         products_list = Product.objects.filter(category=query)
-#         if not products_list.exists():
-#             Product.objects.all()
-#         return products_list
+class ProductCategView(ListView):
+    template_name = 'products/product_categ.html'
+    model = Product
+
+    def get_queryset(self):
+        query =self.request.GET.get('product_categ')
+        print(query)
+        if query:
+            products_list = Product.objects.filter(category=query)
+        else:
+            products_list = Product.objects.all()
+        print(products_list)
+        return products_list
+
+
+
 
 
 class ProductCreateView(CreateView):

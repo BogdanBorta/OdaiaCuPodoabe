@@ -16,8 +16,8 @@
 
     <title>Odaia cu Podoabe {% block title %}{% endblock title %}</title>
 </head>
-<body>
-<!--Navbar -->
+<body style="background: PeachPuff">
+
 <!--Navbar -->
 <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
     <a class="navbar-brand" href="{% url 'welcome_page' %}">
@@ -27,7 +27,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-                <a class="nav-link" href="#">Categorii</a>
+                <a class="nav-link" href="{% url 'products:product_categ' %}">Categorii</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'products:product_list' %}">Toate produsele</a>
@@ -44,7 +44,7 @@
         </ul>
 
         <!--        SEARCH BAR-->
-        <form action="{% url 'products:search_results' %}" method="get">
+        <form class="form-inlinemy-2 my-lg-3" action="{% url 'products:search_results' %}" method="get">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <input name='search' class="form-control mr-sm-2" type="search" placeholder="Search"
                        aria-label="Search">
@@ -56,7 +56,7 @@
 
 
         {% if user.is_authenticated %}
-        <div id="navbar-list-4 ">
+        <div id="navbar-list-1 ">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -89,9 +89,6 @@
             </ul>
         </div>
 
-        <p style="color:lime">Bun venit , </p>
-        <br>
-        <p style="color:blue"> {{ request.user }} !</p>
         {% endif %}
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4"
@@ -101,7 +98,7 @@
 
 </nav>
 <!--/.Navbar -->
-<!--/.Navbar -->
+
 
 <div class=wrapper">
     {% block content %}
