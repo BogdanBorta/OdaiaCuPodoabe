@@ -1,15 +1,19 @@
 {% extends 'products/base.html' %}
-
+{% load static%}
+{% block style %}<link rel="stylesheet" href="{% static 'css/style.css'%}" /> {% endblock style %}
 {% block title %} - Detalii produs {% endblock title %}
 
 {% block content %}
+<div class="container"
 
-    Denumire produs: {{ product_details.name }}<br/>
-    Pret: {{ product_details.price }}<br/>
-    <img src="{{ MEDIA_URL }}{{ product_details.image.url }}" width="500px">
+    <h1 id="product-detail-name">{{ product_details.name }} </h1>
+    <br/>
+    <p id='detail-view-price'>{{ product_details.price }} RON</p>
+    <img src="{{ MEDIA_URL }}{{ product_details.image.url }}" width="1080px">
     </br>
     <h4>Decriere</h4>
     <p>{{ product_details.description}}</p>
 
-    <button><a href="/products/products_list">Înapoi la lista produselor</a></button>
+    <button class='back-button'><a id='back-button-link' href="/products/products_list">Înapoi la lista produselor</a></button>
+</div>
 {% endblock content %}

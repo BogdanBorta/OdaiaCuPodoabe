@@ -2,10 +2,10 @@ import django
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import UserRegistrationForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserChangeForm
-
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
+from .forms import EditProfileForm, UserRegistrationForm
+from django.contrib.auth import update_session_auth_hash
 
 
 def login_view(request):
@@ -56,15 +56,32 @@ def profile_view(request):
     context = {'user': request.user}  # requesting the user object
     return render(request, 'users/profile.html', context)
 
+
 def edit_profile_view(request):
     if request.method == "POST":
-        form = UserChangeForm(request.POST, instance=request.user)
+        form = EditProfileForm(request.POST, instance=request.user)
 
         if form.is_valid():
             form.save()
             return redirect('/users/profile/')
     else:
-        form = UserChangeForm(instance=request.user)
-        context={'form':form}
+        form = EditProfileForm(instance=request.user)
+        context = {'form': form}
         return render(request, 'users/edit_profile.html', context)
 
+
+def change_password_view(request):
+    if request.method == "POST":
+        form = PasswordChangeForm(data=request.POST, user=request.user)
+
+        if form.is_valid():
+            form.save()
+            # Dupa schimbarea parolei, userul ramane logat
+            update_session_auth_hash(request, form.user)
+            return redirect('/users/profile/')
+        else:
+            return redirect('/users/password/')
+    else:
+        form = PasswordChangeForm(user=request.user)
+        context = {'form': form}
+        return render(request, 'users/change_password.html', context)

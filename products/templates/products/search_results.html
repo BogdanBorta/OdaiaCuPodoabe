@@ -1,33 +1,31 @@
-{% extends "products/base.html" %}
-{% load static %}
-{% block style %}
-<link rel="stylesheet" href="{% static 'css/styles.css'%}">
-{% endblock style %}
-
-{% block content %}
-<div class="container-fluid" style="height:70%">
-<div class="row row-cols-1 row-cols-md-3 g-4">
+{% extends "products/base.html" %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/style.css'%}" />
+{% endblock style %} {% block content %}
+<div class="container-fluid" style="height: 70%">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
     {% if not product_list %}
-<p>Obiectul cautat nu exista</p>
-{% endif %}
-    {% for product in product_list %}
-  <div class="col">
-    <div class="card h-100">
+    <p>Obiectul cautat nu exista</p>
+    {% endif %} {% for product in product_list %}
+    <div class="col">
+      <div class="card h-100">
         <a href=" {% url 'products:product_details' product.id %}">
-            <img src="{{ MEDIA_URL }}{{ product.image.url }}" class="card-img-top" alt="...">
+          <img
+            src="{{ MEDIA_URL }}{{ product.image.url }}"
+            class="card-img-top"
+            alt="..."
+          />
         </a>
         <div class="card-body">
-            <h5 class="card-title">{{product.name}}</h5>
-            <p class="card-text">{{product.description}}</p>
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">{{product.description}}</p>
         </div>
-        <div class="card-footer ">
-            <p>Preț: {{product.price}} RON </p>
+        <div class="card-footer">
+          <p>Preț: {{product.price}} RON</p>
         </div>
+      </div>
     </div>
+    {% endfor %}
   </div>
-      {% endfor %}
-</div>
 </div>
 
 {% endblock %}
-
