@@ -16,10 +16,10 @@
 
     <title>Odaia cu Podoabe {% block title %}{% endblock title %}</title>
 </head>
-<body style="background: #F7F79B">
+<body >
 
 <!--Navbar -->
-<nav class="navbar navbar-dark bg-dark navbar-expand-sm" id="navbar-div">
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg" id="navbar-div">
     {% if user.is_authenticated %}
         <div id="navbar-list-1 ">
             <ul class="navbar-nav" id='profile-div'>
@@ -31,7 +31,7 @@
                         {% for ass in backends.associated %}
                           {% if ass.provider == 'facebook' %}
 
-                                <img src="{{ass.extra_data.picture.data.url}}" alt="" width="40" height="40" class="rounded-circle">
+                                <img src="{{ass.extra_data.picture.data.url}}" alt="" width="70" height="70" class="rounded-circle">
 
 
                           {% endif %}
@@ -56,20 +56,20 @@
     
     {% endif %}
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0" >
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'products:product_categ' %}">Categorii</a>
+                <a class="nav-link" href="{% url 'products:product_categ' %}" id="a-categorii">Categorii</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'products:product_list' %}">Toate produsele</a>
+                <a class="nav-link" href="{% url 'products:product_list' %}" id="a-toate-prod">Toate produsele</a>
             </li>
             {% if not user.is_authenticated %}
 
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}">Creaza cont</a>
+                <a class="nav-link" href="{% url 'register' %}" id="a-creaza-cont">Creaza cont</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'login_view' %}">Log in</a>
+                <a class="nav-link" href="{% url 'login_view' %}" id="a-login">Log in</a>
             </li>
             {% endif %}
         </ul>

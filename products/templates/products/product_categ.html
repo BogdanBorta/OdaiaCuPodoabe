@@ -70,13 +70,13 @@
   </div>
 </form>
 
-<div class="container-fluid" style="height: 70%">
+<div class="container-fluid" style="height: 100%">
   <div class="row row-cols-1 row-cols-md-3 g-4">
     {% if not product_list %}
     <p>Nu avem nici un obiect din aceasta categorie</p>
     {% endif %} {% for product in product_list %}
     <div class="col">
-      <div class="card h-100">
+      <div class="card h-100" id="product-card-categ">
         <a href=" {% url 'products:product_details' product.id %}">
           <img
             src="{{ MEDIA_URL }}{{ product.image.url }}"
