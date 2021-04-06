@@ -155,5 +155,5 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
     ('link', 'profile_url'),
 ]
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
-print("base dir path", BASE_DIR)
+
 
