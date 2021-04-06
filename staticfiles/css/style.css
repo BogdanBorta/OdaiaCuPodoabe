@@ -1,0 +1,106 @@
+body {
+  background-image: url("../img/bg_pic.png");
+  background-repeat: repeat;
+  height: 100%;
+  background-size: cover;
+}
+
+.button-categ {
+  margin: auto;
+  width: 100%;
+  border: none;
+  background-color: white;
+  font-family: "Dancing Script", cursive;
+  color: rgba(9, 78, 69, 0.966);
+  font-weight: bolder;
+}
+
+.button-categ:hover {
+  background-color: #c8e4fe;
+  border-width: 1px;
+}
+
+#buttons-container-div {
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+#navbar-div {
+  background-color: white !important;
+}
+
+.navbar-brand {
+  color: rgba(9, 78, 69, 0.966) !important;
+  font-weight: bolder;
+  font-size: x-large;
+  font-family: "Dancing Script", cursive;
+}
+
+#profile-div {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+.back-button {
+  margin: auto;
+  border-radius: 20px;
+}
+
+.back-button:hover {
+  background-color: cornflowerblue;
+
+  border-width: 1px;
+}
+
+#back-button-link {
+  text-decoration: none;
+  font-weight: bold;
+  padding: 7px;
+}
+
+#back-button-link:hover {
+  color: #c8e4fe;
+}
+
+#logo-icon {
+  margin: auto;
+  margin-left: 5rem;
+}
+
+#detail-view-price {
+  margin: auto;
+  text-align: center;
+  font-size: x-large;
+  margin-bottom: 10px;
+}
+
+#product-detail-name {
+  font-size: xx-large;
+  text-align: center;
+  font-weight: bolder;
+}
+
+#product-card-categ,
+#product-card,
+#product-card-search {
+  border: solid black 2px;
+  border-radius: 20px;
+  border: black solid 2px;
+}
+
+.card-img-top {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.container-fluid {
+  margin-top: 5px;
+}
+
+#a-categorii,
+#a-toate-prod,
+#a-creaza-cont,
+#a-login {
+  color: darkslateblue;
+  font-weight: bold;
+}

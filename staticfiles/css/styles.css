@@ -1,0 +1,118 @@
+#welcome-div {
+  background-image: url("../img/bg_pic.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+.register-div {
+  background-image: url("../img/bg_pic.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.user_form {
+  margin: auto;
+  text-align: justify;
+}
+
+.content-register {
+  margin-left: 30px;
+  width: 30%;
+  height: fit-content;
+  background-color: #c8e4fe;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 3%;
+  border-width: 10px;
+  border: solid black;
+  text-align: center;
+}
+
+.enter-button {
+  background-color: #c8e4fe;
+  border: solid black 2px;
+  padding: 10px, 10px;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 200%;
+  cursor: pointer;
+  width: 300px;
+  height: 85px;
+  border-radius: 20px;
+  position: relative;
+  left: 40%;
+  top: 25%;
+}
+
+.enter-button:hover {
+  background-color: cornflowerblue;
+}
+
+.enter-button-link {
+  text-decoration: none;
+}
+
+#register-button {
+  color: black;
+  border-radius: 10px;
+  border: bold black;
+  width: 150px;
+}
+
+#register-button:hover {
+  background-color: cornflowerblue;
+}
+
+.form-group {
+  width: 100%;
+  border-width: 10px;
+}
+
+.card-footer {
+  background-color: #c8e4fe;
+}
+
+#welcome-div {
+  margin-top: 10px;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* LOG IN PAGE */
+#body-login {
+  background-image: url("../img/bg_pic.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#login-card-body {
+  background-color: #c8e4fe;
+  border: solid black;
+  border-radius: 20px;
+}
+
+#row-2 {
+  margin: 0px !important;
+}
+
+#row-3 {
+  border: none;
+  margin: 0px;
+}
+
+#login-button {
+  margin-left: 75px;
+  width: 65%;
+  margin-top: 25px;
+}
